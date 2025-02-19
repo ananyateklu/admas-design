@@ -7,7 +7,7 @@
  * Key features:
  * - Imports environment variables from `.env.local`.
  * - Sets up a Postgres client with connection pooling.
- * - Registers all schema tables for typed queries.
+ * - Registers all schema tables for typed queries (profiles, portfolioItems, testimonials, bookings).
  *
  * @dependencies
  * - `postgres` library for the Postgres client.
@@ -16,13 +16,14 @@
  *
  * @notes
  * - Ensure the `DATABASE_URL` is correctly set in `.env.local`.
- * - The `schema` object merges all tables including `profiles`, `portfolioItems`, and `testimonials`.
+ * - The `schema` object merges all tables including `profiles`, `portfolioItems`, `testimonials`, and `bookings`.
  */
 
 import {
   profilesTable,
   portfolioItemsTable,
-  testimonialsTable
+  testimonialsTable,
+  bookingsTable
 } from "@/db/schema"
 import { config } from "dotenv"
 import { drizzle } from "drizzle-orm/postgres-js"
@@ -38,7 +39,8 @@ config({ path: ".env.local" })
 const schema = {
   profiles: profilesTable,
   portfolioItems: portfolioItemsTable,
-  testimonials: testimonialsTable
+  testimonials: testimonialsTable,
+  bookings: bookingsTable
 }
 
 /**

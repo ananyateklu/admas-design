@@ -15,6 +15,13 @@
       "when": 1739937031938,
       "tag": "0001_ambiguous_praxagora",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1739938533130,
+      "tag": "0002_solid_shen",
+      "breakpoints": true
     }
   ]
 }

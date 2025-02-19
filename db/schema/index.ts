@@ -4,7 +4,7 @@
  * By doing so, we can easily import them from elsewhere in the codebase.
  *
  * Key features:
- * - Central place to export new schemas (profiles, portfolio items, testimonials, etc.).
+ * - Central place to export new schemas (profiles, portfolio items, testimonials, bookings, etc.).
  * - Maintains consistent usage throughout the application.
  *
  * @notes
@@ -14,3 +14,4 @@
 export * from "./profiles-schema"
 export * from "./portfolio-schema"
 export * from "./testimonials-schema"
+export * from "./bookings-schema"
