@@ -123,7 +123,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="rounded-md bg-blue-600 px-4 hover:bg-blue-700">
+                <Button className="rounded-md bg-gray-900 px-4 hover:bg-gray-800">
                   Request Quote
                 </Button>
               </motion.div>
@@ -167,7 +167,7 @@ export default function Header() {
             <li>
               <Link
                 href="/"
-                className={`block font-medium hover:text-blue-600 ${textColor}`}
+                className={`block font-medium hover:text-gray-900 ${textColor}`}
                 onClick={toggleMenu}
               >
                 Home
@@ -177,7 +177,7 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`block font-medium hover:text-blue-600 ${textColor}`}
+                  className={`block font-medium hover:text-gray-900 ${textColor}`}
                   onClick={toggleMenu}
                 >
                   {link.label}
@@ -189,7 +189,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`block font-medium hover:text-blue-600 ${textColor}`}
+                    className={`block font-medium hover:text-gray-900 ${textColor}`}
                     onClick={toggleMenu}
                   >
                     {link.label}
