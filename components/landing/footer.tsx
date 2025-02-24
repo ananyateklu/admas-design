@@ -7,27 +7,27 @@ import Link from "next/link"
 
 export async function Footer() {
   return (
-    <footer className="border-t">
+    <footer className="border-t border-blue-100 bg-blue-50">
       <div className="container mx-auto max-w-7xl px-4 py-12 md:px-6">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Company</h3>
+            <h3 className="text-lg font-bold text-gray-800">Company</h3>
             <div className="flex flex-col gap-2">
               <Link
                 href="/about"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 About
               </Link>
               <Link
                 href="/blog"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Blog
               </Link>
               <Link
                 href="/careers"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Careers
               </Link>
@@ -35,23 +35,23 @@ export async function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Product</h3>
+            <h3 className="text-lg font-bold text-gray-800">Product</h3>
             <div className="flex flex-col gap-2">
               <Link
                 href="/features"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Features
               </Link>
               <Link
                 href="/pricing"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Pricing
               </Link>
               <Link
                 href="/docs"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Documentation
               </Link>
@@ -59,23 +59,23 @@ export async function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Resources</h3>
+            <h3 className="text-lg font-bold text-gray-800">Resources</h3>
             <div className="flex flex-col gap-2">
               <Link
                 href="/support"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Support
               </Link>
               <Link
                 href="/terms"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Terms
               </Link>
               <Link
                 href="/privacy"
-                className="text-muted-foreground hover:text-foreground transition"
+                className="text-gray-700 transition hover:text-gray-900"
               >
                 Privacy
               </Link>
@@ -83,29 +83,29 @@ export async function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Social</h3>
+            <h3 className="text-lg font-bold text-gray-800">Social</h3>
             <div className="flex gap-4">
               <Link
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Github className="text-muted-foreground hover:text-foreground size-6 transition" />
+                <Github className="size-6 text-gray-700 transition hover:text-gray-900" />
               </Link>
               <Link
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Twitter className="text-muted-foreground hover:text-foreground size-6 transition" />
+                <Twitter className="size-6 text-gray-700 transition hover:text-gray-900" />
               </Link>
             </div>
           </div>
         </div>
 
-        <div className="text-muted-foreground mt-12 pt-8 text-center">
+        <div className="mt-12 border-t border-blue-100 pt-8 text-center text-gray-600">
           <p>
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} Admas Design. All rights reserved.
           </p>
         </div>
       </div>

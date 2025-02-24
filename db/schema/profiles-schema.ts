@@ -4,7 +4,13 @@ Defines the database schema for profiles.
 
 import { pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core"
 
-export const membershipEnum = pgEnum("membership", ["free", "pro"])
+export const membershipEnum = pgEnum("membership", [
+  "free",
+  "basic",
+  "professional",
+  "business",
+  "enterprise"
+])
 
 export const profilesTable = pgTable("profiles", {
   userId: text("user_id").primaryKey().notNull(),

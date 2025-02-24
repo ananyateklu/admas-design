@@ -16,10 +16,12 @@ const getMembershipStatus = (
   status: Stripe.Subscription.Status,
   membership: MembershipStatus
 ): MembershipStatus => {
+  // If the subscription is active or trialing, return the membership level from the product metadata
   switch (status) {
     case "active":
     case "trialing":
       return membership
+    // If the subscription is canceled, expired, or in another non-active state, revert to free
     case "canceled":
     case "incomplete":
     case "incomplete_expired":
@@ -84,10 +86,12 @@ export const manageSubscriptionStatusChange = async (
     const product = await stripe.products.retrieve(productId)
     const membership = product.metadata.membership as MembershipStatus
 
-    if (!["free", "pro"].includes(membership)) {
-      throw new Error(
-        `Invalid membership type in product metadata: ${membership}`
-      )
+    // Validate the membership type from product metadata
+    const validMemberships: MembershipStatus[] = ["free", "basic", "professional", "business", "enterprise"]
+    if (!validMemberships.includes(membership)) {
+      console.warn(`Invalid membership type in product metadata: ${membership}. Defaulting to free.`)
+      // Default to free if the membership type is not valid
+      return "free"
     }
 
     const membershipStatus = getMembershipStatus(
