@@ -19,8 +19,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Receipt AI",
-  description: "A full-stack web app template."
+  title: "Admas Design | Professional Web Design Services",
+  description:
+    "Admas Design offers premium website design and development services tailored to your business needs. Get a beautiful, responsive website today."
 }
 
 export default async function RootLayout({

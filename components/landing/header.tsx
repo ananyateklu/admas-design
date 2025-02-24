@@ -13,11 +13,12 @@ import {
   UserButton
 } from "@clerk/nextjs"
 import { motion } from "framer-motion"
-import { Menu, Receipt, X } from "lucide-react"
+import { Layout, Menu, Square, X } from "lucide-react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
@@ -43,29 +44,31 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Define text color based on scroll position
+  const textColor = isScrolled ? "text-gray-900" : "text-gray-800"
+  const textMutedColor = isScrolled ? "text-muted-foreground" : "text-gray-700"
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className={`sticky top-0 z-50 transition-colors ${
-        isScrolled
-          ? "bg-background/80 shadow-sm backdrop-blur-sm"
-          : "bg-background"
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 shadow-sm backdrop-blur-sm" : "bg-blue-50"
       }`}
     >
-      <div className="container mx-auto flex max-w-7xl items-center justify-between p-4">
+      <div className="container mx-auto flex max-w-7xl items-center justify-between p-4 pt-6">
         <motion.div
           className="flex items-center space-x-2 hover:cursor-pointer hover:opacity-80"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Receipt className="size-6" />
-          <Link href="/" className="text-xl font-bold">
-            Receipt AI
+          <Square className={`size-6 ${textColor}`} />
+          <Link href="/" className={`text-xl font-bold ${textColor}`}>
+            Admas Design
           </Link>
         </motion.div>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 space-x-2 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 space-x-8 md:flex">
           {navLinks.map(link => (
             <motion.div
               key={link.href}
@@ -74,7 +77,7 @@ export default function Header() {
             >
               <Link
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground rounded-full px-3 py-1 transition"
+                className={`${textMutedColor} font-medium transition hover:text-gray-900`}
               >
                 {link.label}
               </Link>
@@ -90,7 +93,7 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className="text-muted-foreground hover:text-foreground rounded-full px-3 py-1 transition"
+                  className={`${textMutedColor} font-medium transition hover:text-gray-900`}
                 >
                   {link.label}
                 </Link>
@@ -106,7 +109,12 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="ghost">Sign In</Button>
+                <Button
+                  variant="outline"
+                  className="rounded-md border-gray-300 bg-white/80 px-4"
+                >
+                  Sign In
+                </Button>
               </motion.div>
             </SignInButton>
 
@@ -115,7 +123,9 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button>Get Started</Button>
+                <Button className="rounded-md bg-blue-600 px-4 hover:bg-blue-700">
+                  Request Quote
+                </Button>
               </motion.div>
             </SignUpButton>
           </SignedOut>
@@ -134,6 +144,7 @@ export default function Header() {
               size="icon"
               onClick={toggleMenu}
               aria-label="Toggle menu"
+              className={!isScrolled ? "text-gray-800" : ""}
             >
               {isMenuOpen ? (
                 <X className="size-6" />
@@ -150,13 +161,13 @@ export default function Header() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="bg-primary-foreground text-primary p-4 md:hidden"
+          className={`p-4 md:hidden ${isScrolled ? "bg-white/90 shadow-md backdrop-blur-sm" : "bg-white/80 shadow-md backdrop-blur-sm"}`}
         >
           <ul className="space-y-2">
             <li>
               <Link
                 href="/"
-                className="block hover:underline"
+                className={`block font-medium hover:text-blue-600 ${textColor}`}
                 onClick={toggleMenu}
               >
                 Home
@@ -166,7 +177,7 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block hover:underline"
+                  className={`block font-medium hover:text-blue-600 ${textColor}`}
                   onClick={toggleMenu}
                 >
                   {link.label}
@@ -178,7 +189,7 @@ export default function Header() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block hover:underline"
+                    className={`block font-medium hover:text-blue-600 ${textColor}`}
                     onClick={toggleMenu}
                   >
                     {link.label}
