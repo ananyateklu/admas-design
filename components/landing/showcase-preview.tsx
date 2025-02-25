@@ -113,7 +113,7 @@ export function ShowcasePreviewSection() {
                 <motion.div
                   key={project.id}
                   className={cn(
-                    "parallax-item group relative overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl",
+                    "parallax-item group relative overflow-hidden rounded-2xl transition-all duration-500",
                     colSpan,
                     isEven ? "lg:translate-y-8" : ""
                   )}
@@ -126,74 +126,74 @@ export function ShowcasePreviewSection() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                 >
-                  {/* Project image with overlay */}
-                  <div className="aspect-[4/3] w-full">
-                    <div className="relative size-full overflow-hidden bg-black/50">
-                      {/* Dark background fallback that only shows during image load */}
-                      <div className="absolute inset-0 bg-black/80"></div>
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="z-10 object-cover object-center transition-transform duration-700 group-hover:scale-110"
-                        priority={true}
-                      />
-                      {/* Enhanced gradient overlay for better text readability */}
-                      <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
+                  {/* Card with border and glass effect */}
+                  <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-black/70 shadow-xl backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10">
+                    {/* Project image with improved overlay */}
+                    <div className="aspect-[4/3] w-full overflow-hidden">
+                      <div className="relative size-full">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          className="z-10 object-cover object-center mix-blend-overlay transition-all duration-700 group-hover:scale-105"
+                          priority={true}
+                        />
 
-                      {/* Diagonal accent line */}
-                      <div className="absolute inset-0 z-30 overflow-hidden">
-                        <div className="absolute -left-1/4 top-1/2 h-px w-[150%] -rotate-12 bg-white/30 transition-all duration-700 group-hover:bg-blue-400/60" />
+                        {/* Blue accent line */}
+                        <div className="absolute bottom-0 left-0 z-30 h-1 w-0 bg-blue-500 transition-all duration-700 ease-out group-hover:w-full" />
                       </div>
                     </div>
-                  </div>
 
-                  {/* Project info with improved readability */}
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                    <span className="mb-2 inline-block rounded-full bg-blue-600/90 px-3 py-1 text-xs font-medium backdrop-blur-sm">
-                      {project.category}
-                    </span>
-                    <h3 className="mb-2 text-2xl font-bold drop-shadow-md group-hover:text-blue-200">
-                      {project.title}
-                    </h3>
+                    {/* Project info with improved layout */}
+                    <div className="absolute inset-x-0 bottom-0 z-30 p-6 text-white">
+                      <div className="transition-all duration-500 group-hover:translate-y-0">
+                        {/* Category tag with updated design */}
+                        <span className="relative mb-3 inline-flex items-center rounded-full bg-blue-600/90 px-3 py-1 text-xs font-medium backdrop-blur-sm transition-all duration-300 group-hover:bg-blue-500">
+                          {project.category}
+                        </span>
 
-                    <div className="opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <Link
-                        href={`/showcase#project-${project.id}`}
-                        className="inline-flex items-center gap-1 text-sm font-medium text-white drop-shadow-md transition hover:text-blue-200"
-                      >
-                        View Project <ArrowUpRight className="size-4" />
-                      </Link>
+                        {/* Title with improved typography */}
+                        <h3 className="relative mb-4 text-2xl font-bold tracking-tight text-white drop-shadow-lg transition-all duration-300 group-hover:text-blue-100">
+                          {project.title}
+                        </h3>
+
+                        {/* View project link with improved animation */}
+                        <div className="relative opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                          <Link
+                            href={`/showcase#project-${project.id}`}
+                            className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-blue-400/50 hover:bg-blue-600/50"
+                          >
+                            View Project{" "}
+                            <ArrowUpRight className="ml-2 size-4" />
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Blue corner accent */}
-                  <div className="absolute right-0 top-0 size-16 overflow-hidden">
-                    <div className="absolute right-0 top-0 size-8 -translate-y-1/2 translate-x-1/2 rotate-45 bg-blue-600 transition-all duration-300 group-hover:bg-blue-500"></div>
                   </div>
                 </motion.div>
               )
             })}
           </div>
+        </div>
 
-          {/* View all projects button */}
-          <div className="z-40 flex justify-center pt-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+        {/* View all projects button - completely separated from parallax content */}
+        <div className="relative z-50 mt-40 pt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <Link
+              href="/showcase"
+              className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-900 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 hover:shadow-md"
             >
-              <Link
-                href="/showcase"
-                className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-900 shadow-sm transition-all hover:border-blue-300 hover:bg-blue-50 hover:text-blue-600 hover:shadow"
-              >
-                View All Projects
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </motion.div>
-          </div>
+              View All Projects
+              <ArrowUpRight className="size-4" />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
