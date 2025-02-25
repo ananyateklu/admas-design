@@ -97,7 +97,7 @@ export const HeroSection = () => {
                 Get a Quote
               </Button>
             </Link>
-            <Link href="/portfolio">
+            <Link href="/showcase">
               <Button size="lg" variant="outline" className="px-8 text-lg">
                 View Our Work
               </Button>
