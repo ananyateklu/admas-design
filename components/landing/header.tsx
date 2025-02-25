@@ -20,6 +20,7 @@ import { useEffect, useState } from "react"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/showcase", label: "Showcase" },
   { href: "/features", label: "Features" },
   { href: "/pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" }
@@ -62,7 +63,7 @@ export default function Header() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <Square className={`size-6 ${textColor}`} />
+          <Square className="size-6 text-blue-600" />
           <Link href="/" className={`text-xl font-bold ${textColor}`}>
             Admas Design
           </Link>
@@ -164,15 +165,6 @@ export default function Header() {
           className={`p-4 md:hidden ${isScrolled ? "bg-white/90 shadow-md backdrop-blur-sm" : "bg-white/80 shadow-md backdrop-blur-sm"}`}
         >
           <ul className="space-y-2">
-            <li>
-              <Link
-                href="/"
-                className={`block font-medium hover:text-gray-900 ${textColor}`}
-                onClick={toggleMenu}
-              >
-                Home
-              </Link>
-            </li>
             {navLinks.map(link => (
               <li key={link.href}>
                 <Link
